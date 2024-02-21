@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Detection
   - Water
+  - Ground
   layers:
   - Default
   - TransparentFX
