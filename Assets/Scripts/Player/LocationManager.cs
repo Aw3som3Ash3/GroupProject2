@@ -6,6 +6,8 @@ using UnityEngine;
 public class LocationManager : DuckDuckGoose
 {
     public Duck goose;
+    public Transform playerLoc;
+    private bool broadcast = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,24 @@ public class LocationManager : DuckDuckGoose
     {
         myLoc = now;
         goose.UpdateLocation(myLoc);
-        Debug.Log(myLoc);
+        Debug.Log(now);
+        if (now != Location.PlayerSpawn)
+        {
+            broadcast = true;
+        }
+        else
+        {
+            broadcast = false;
+        }
+       
+        Debug.Log(broadcast);
     }
     
+    public void UpdatePlayerLocation()
+    {
+        if (broadcast)
+        {
+            goose.UpdateDestination(playerLoc);
+        }
+    }
 }

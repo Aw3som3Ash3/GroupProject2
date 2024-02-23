@@ -16,12 +16,17 @@ public class BoxDetection : DuckDuckGoose
     {
         
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         GameObject curr = other.gameObject;
-        if (curr.CompareTag("Player") && !curr.GetComponent<PlayerController>().crouched)
+        if (curr.CompareTag("Player"))
         {
-            locMan.UpdateLocation(myLoc);
+            Debug.Log("Player in");
+            if (curr.GetComponent<PlayerController>().myLoc != myLoc && !curr.GetComponent<PlayerController>().crouched)
+            {
+                locMan.UpdateLocation(myLoc);
+                Debug.Log("Update via trigger");
+            }
         }
     }
 }

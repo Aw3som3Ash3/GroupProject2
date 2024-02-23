@@ -15,8 +15,9 @@ public class PlayerController : DuckDuckGoose
     public bool grounded;
     private float drag = .8f;
     public InputAction moveVector;
-        //Jump
+    //Jump
     public float jumpForce = 100;
+    private GameObject me;
     
     //Camera
     private float mouseX;
@@ -36,7 +37,7 @@ public class PlayerController : DuckDuckGoose
     void Start()
     {
         InitializeComponents();
-        
+        locMan.UpdatePlayerLocation();
     }
 
     // Update is called once per frame
@@ -44,11 +45,11 @@ public class PlayerController : DuckDuckGoose
     {
         CameraUpdate();
         MoveUpdate();
+        if(!crouched){locMan.UpdatePlayerLocation();}
     }
     void InitializeComponents(){
         //Components
         rb = GetComponent<Rigidbody>();
-        locMan = GetComponent<LocationManager>();
         actions = GetComponent<PlayerInput>();
         
         //Actions
@@ -67,6 +68,7 @@ public class PlayerController : DuckDuckGoose
         {
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
             grounded = false;
+            locMan.UpdatePlayerLocation();
         }
     }
 
@@ -76,6 +78,7 @@ public class PlayerController : DuckDuckGoose
         currSpeed = crouched ? crouchSpeed : walkSpeed;
         if (!crouched)
         {
+            Debug.Log("Updating via stand");
             locMan.UpdateLocation(myLoc);
         }
     }
