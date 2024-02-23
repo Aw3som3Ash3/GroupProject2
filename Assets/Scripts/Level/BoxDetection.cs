@@ -21,11 +21,9 @@ public class BoxDetection : DuckDuckGoose
         GameObject curr = other.gameObject;
         if (curr.CompareTag("Player"))
         {
-            Debug.Log("Player in");
             if (curr.GetComponent<PlayerController>().myLoc != myLoc && !curr.GetComponent<PlayerController>().crouched)
             {
                 locMan.UpdateLocation(myLoc);
-                Debug.Log("Update via trigger");
             }
         }
     }

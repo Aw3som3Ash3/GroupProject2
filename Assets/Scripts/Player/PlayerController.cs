@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : DuckDuckGoose
+public class PlayerController : Damageable
 {
     //Movement
     public float walkSpeed;
@@ -15,6 +16,7 @@ public class PlayerController : DuckDuckGoose
     public bool grounded;
     private float drag = .8f;
     public InputAction moveVector;
+    
     //Jump
     public float jumpForce = 100;
     private GameObject me;
@@ -33,6 +35,9 @@ public class PlayerController : DuckDuckGoose
     private Rigidbody rb;
     public PlayerInput actions;
     public Camera myCam;
+    
+    //Location
+    public bool audible = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +69,7 @@ public class PlayerController : DuckDuckGoose
 
     private void OnJump(InputAction.CallbackContext context)
     {
-        if (grounded)
+        if (grounded && !crouched)
         {
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
             grounded = false;
@@ -76,9 +81,9 @@ public class PlayerController : DuckDuckGoose
     {
         crouched = !crouched;
         currSpeed = crouched ? crouchSpeed : walkSpeed;
+        audible = crouched ? true : false;
         if (!crouched)
         {
-            Debug.Log("Updating via stand");
             locMan.UpdateLocation(myLoc);
         }
     }
@@ -105,6 +110,14 @@ public class PlayerController : DuckDuckGoose
         {
             grounded = true;
             drag = .8f;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "DuckSpawnBox")
+        {
+            locMan.broadcast = true;
         }
     }
 }

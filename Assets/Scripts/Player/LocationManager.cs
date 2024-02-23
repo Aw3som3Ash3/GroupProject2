@@ -7,7 +7,7 @@ public class LocationManager : DuckDuckGoose
 {
     public Duck goose;
     public Transform playerLoc;
-    private bool broadcast = false;
+    public bool broadcast = false;
     // Start is called before the first frame update
     void Start()
     {
