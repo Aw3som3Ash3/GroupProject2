@@ -17,6 +17,9 @@ public class Duck : Damageable
     //Detection
     public bool canSeePlayer;
     public bool canHearPlayer;
+    public bool onceQuacked;
+    public float quackNormal;
+    public float quackAccelerated;
     public bool know;
     
     //Vision
@@ -78,9 +81,10 @@ public class Duck : Damageable
         }
     }
 
-    IEnumerator QuackTimer()
+    IEnumerator QuackTimer(int delay)
     {
-        yield return new WaitForSeconds(5f);
+        WaitForSeconds quackWait = onceQuacked ? new WaitForSeconds(quackAccelerated) : new WaitForSeconds(quackNormal);
+        yield return quackWait;
         patrolling = false;
         AreaCheck(false);
     }
@@ -112,6 +116,7 @@ public class Duck : Damageable
                 }
                 else if (playerRef.audible)
                 {
+                    onceQuacked = false;
                     canHearPlayer = true;
                     know = true;
                     patrolling = false;
@@ -119,6 +124,12 @@ public class Duck : Damageable
                     BeginPatrol();
                 }
             }
+        }
+
+        if (!canHearPlayer)
+        {
+            onceQuacked = true;
+            StartCoroutine("QuackTimer");
         }
     }
 
