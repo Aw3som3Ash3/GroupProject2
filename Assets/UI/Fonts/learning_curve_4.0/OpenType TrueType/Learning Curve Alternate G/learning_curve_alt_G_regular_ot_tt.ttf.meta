@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 7ef278e8af230438d9681ee402887371
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Learning Curve Alt G
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 48c18742a11a14a989bbecf2458c4375, type: 3}
+  - {fileID: 12800000, guid: a8cc34ad93ec44f1f97402b645fb6122, type: 3}
+  - {fileID: 12800000, guid: adc67b5c0e08d46b0af3b863d8fdcc78, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

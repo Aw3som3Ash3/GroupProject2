@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 17018ebc8c6e14ff09a67600e57c7ff4
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Learning Curve Dashed
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 85c37bc9190a64b45b168c5ba9bb7fc1, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
