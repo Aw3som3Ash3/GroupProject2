@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : DuckDuckGoose
+public class PlayerController : Damageable
 {
     //Movement
     public float walkSpeed;
@@ -15,28 +16,33 @@ public class PlayerController : DuckDuckGoose
     public bool grounded;
     private float drag = .8f;
     public InputAction moveVector;
-        //Jump
+
+    //Jump
     public float jumpForce = 100;
-    
+    private GameObject me;
+
     //Camera
     private float mouseX;
     private float mouseY;
-    [Range(0.0f,10.0f)]
+    [Range(0.0f, 10.0f)]
     public float mouseSens = 1;
     private float xRot;
     private float yRot;
     public InputAction lookVector;
-    
+
     //Components
     public LocationManager locMan;
     private Rigidbody rb;
     public PlayerInput actions;
     public Camera myCam;
+
+    //Location
+    public bool audible = true;
     // Start is called before the first frame update
     void Start()
     {
         InitializeComponents();
-        
+        locMan.UpdatePlayerLocation();
     }
 
     // Update is called once per frame
@@ -44,29 +50,31 @@ public class PlayerController : DuckDuckGoose
     {
         CameraUpdate();
         MoveUpdate();
+        if (!crouched) { locMan.UpdatePlayerLocation(); }
     }
-    void InitializeComponents(){
+    void InitializeComponents()
+    {
         //Components
         rb = GetComponent<Rigidbody>();
-        locMan = GetComponent<LocationManager>();
         actions = GetComponent<PlayerInput>();
-        
+
         //Actions
         moveVector = actions.actions.FindAction("Move");
         lookVector = actions.actions.FindAction("Look");
         actions.actions.FindAction("Jump").performed += OnJump;
         actions.actions.FindAction("Crouch").performed += OnCrouch;
-        
+
         //Set Variables
         currSpeed = walkSpeed;
     }
 
     private void OnJump(InputAction.CallbackContext context)
     {
-        if (grounded)
+        if (grounded && !crouched)
         {
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
             grounded = false;
+            locMan.UpdatePlayerLocation();
         }
     }
 
@@ -74,6 +82,7 @@ public class PlayerController : DuckDuckGoose
     {
         crouched = !crouched;
         currSpeed = crouched ? crouchSpeed : walkSpeed;
+        audible = crouched ? true : false;
         if (!crouched)
         {
             locMan.UpdateLocation(myLoc);
@@ -102,6 +111,14 @@ public class PlayerController : DuckDuckGoose
         {
             grounded = true;
             drag = .8f;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "DuckSpawnBox")
+        {
+            locMan.broadcast = true;
         }
     }
 }
