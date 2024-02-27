@@ -43,6 +43,7 @@ public class PlayerController : Damageable
     {
         InitializeComponents();
         locMan.UpdatePlayerLocation();
+        FindGameManager();
     }
 
     // Update is called once per frame
@@ -63,6 +64,7 @@ public class PlayerController : Damageable
         lookVector = actions.actions.FindAction("Look");
         actions.actions.FindAction("Jump").performed += OnJump;
         actions.actions.FindAction("Crouch").performed += OnCrouch;
+        actions.actions.FindAction("Pause").performed += OnPause;
 
         //Set Variables
         currSpeed = walkSpeed;
@@ -87,6 +89,10 @@ public class PlayerController : Damageable
         {
             locMan.UpdateLocation(myLoc);
         }
+    }
+    private void OnPause(InputAction.CallbackContext context)
+    {
+        gm.OnPause();
     }
 
     private void CameraUpdate()
