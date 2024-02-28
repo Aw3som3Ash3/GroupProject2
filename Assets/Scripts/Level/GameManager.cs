@@ -61,5 +61,10 @@ public class GameManager : MonoBehaviour
         Debug.Log("EndGame");
     }
 
+    public void LoadLevel(string level)
+    {
+        SceneManager.LoadScene(level);
+    }
+
     
 }
