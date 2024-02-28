@@ -44,7 +44,7 @@
                 {
                     "name": "Pause",
                     "type": "Button",
-                    "id": "240ac5bd-5514-45f8-9e4e-920cc8aaf9d7",
+                    "id": "9b39dbac-82d3-42d3-b3f0-31efbe0a68ae",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -186,7 +186,35 @@
                 },
                 {
                     "name": "",
-                    "id": "1cb7ddd8-cc0b-457f-af79-b89d315a6541",
+                    "id": "bd26e55b-5667-4752-80fc-650635c5326a",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "4becdc61-4634-43d6-ab72-a88a2bfc68b1",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "1449c050-716c-4906-9066-3bd21c09b21d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5659672b-9ec6-439e-9ac2-ee63609b6892",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",

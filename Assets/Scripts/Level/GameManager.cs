@@ -1,32 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public Canvas canvas;
-    public Image Pause;
-    public Image Quit;
+    public GameObject Pause;
+    public GameObject Quit;
     public PlayerController player;
+    public InputActionMap Base;
+    public InputActionMap UI;
+    public Button[] buttons;
 
     public bool paused;
     public bool quitMenu;
 
+    public bool QuitMenu
+    {
+        get { return quitMenu; }
+        set { quitMenu = value; }
+    }
+
     private void Start(){
-        canvas.enabled = false;
+        Pause.SetActive(false);
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     public void OnPause(){
         paused = !paused;
-        if(paused){
-            Time.timeScale = 0;
+        if (quitMenu)
+        {
+            Quit.SetActive(false);
+            quitMenu = false;
+            foreach (Button currBtn in buttons)
+            {
+                currBtn.interactable = true;
+            }
+        }
+        if(paused)
+        {
+            Pause.SetActive(true);
+            Time.timeScale =0;
             canvas.enabled = true;
         } else {
             Time.timeScale = 1;
-            canvas.enabled = false;
+            Pause.SetActive(false);
         }
     }
     public void Reload(){
@@ -35,23 +56,10 @@ public class GameManager : MonoBehaviour
     public void OnOptions(){
         Debug.Log("Not Implemented");
     }
-    public void OnQuitMenu(){
-        quitMenu = !quitMenu;
-        if(quitMenu){
-            Quit.enabled = true;
-            for(int i = 0; i < this.gameObject.transform.childCount; i++)
-            {
-                Pause.gameObject.transform.GetChild(i).gameObject.SetActive(false);
-            }
-        } else{
-            Quit.enabled = false;
-            for(int i = 0; i < this.gameObject.transform.childCount; i++)
-            {
-                Pause.gameObject.transform.GetChild(i).gameObject.SetActive(true);
-            } 
-        }
-    }
     public void OnQuit(){
         Application.Quit();
+        Debug.Log("EndGame");
     }
+
+    
 }

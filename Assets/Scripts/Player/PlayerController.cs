@@ -33,7 +33,7 @@ public class PlayerController : Damageable
     //Components
     public LocationManager locMan;
     private Rigidbody rb;
-    public PlayerInput actions;
+    public InputActionAsset actions;
     public Camera myCam;
 
     //Location
@@ -43,7 +43,6 @@ public class PlayerController : Damageable
     {
         InitializeComponents();
         locMan.UpdatePlayerLocation();
-        FindGameManager();
     }
 
     // Update is called once per frame
@@ -57,15 +56,14 @@ public class PlayerController : Damageable
     {
         //Components
         rb = GetComponent<Rigidbody>();
-        actions = GetComponent<PlayerInput>();
 
         //Actions
-        moveVector = actions.actions.FindAction("Move");
-        lookVector = actions.actions.FindAction("Look");
-        actions.actions.FindAction("Jump").performed += OnJump;
-        actions.actions.FindAction("Crouch").performed += OnCrouch;
-        actions.actions.FindAction("Pause").performed += OnPause;
-
+        moveVector = actions.FindAction("Move");
+        lookVector = actions.FindAction("Look");
+        actions.FindAction("Jump").performed += OnJump;
+        actions.FindAction("Crouch").performed += OnCrouch;
+        actions.FindActionMap("Base").FindAction("Pause").performed += OnPause;
+        actions.Enable();
         //Set Variables
         currSpeed = walkSpeed;
     }
@@ -93,6 +91,7 @@ public class PlayerController : Damageable
     private void OnPause(InputAction.CallbackContext context)
     {
         gm.OnPause();
+        Debug.Log("Pause Press");
     }
 
     private void CameraUpdate()
@@ -127,4 +126,6 @@ public class PlayerController : Damageable
             locMan.broadcast = true;
         }
     }
+
+
 }
