@@ -91,7 +91,6 @@ public class PlayerController : Damageable
     private void OnPause(InputAction.CallbackContext context)
     {
         gm.OnPause();
-        Debug.Log("Pause Press");
     }
 
     private void CameraUpdate()
@@ -125,6 +124,12 @@ public class PlayerController : Damageable
         {
             locMan.broadcast = true;
         }
+    }
+
+    public override void Die()
+    {
+        Debug.Log($"{this.gameObject.name} took is Dead");
+        
     }
 
 

@@ -21,6 +21,7 @@ public class Duck : Damageable
     public float quackNormal;
     public float quackAccelerated;
     public bool know;
+    public float detectDistance = 30;
     
     //Vision
     public float radius;
@@ -48,7 +49,7 @@ public class Duck : Damageable
             StartCoroutine("QuackTimer");
             BeginPatrol();
             patrolling = true;
-            Debug.Log("Starting Patrol");
+            //Debug.Log("Starting Patrol");
         }
         if (know || canSeePlayer)
         {
@@ -71,12 +72,13 @@ public class Duck : Damageable
 
     public void UpdateDestination(Transform player)
     {
-        Debug.Log("Trying to Update");
-        if (Vector3.Distance(transform.position, playerObj.transform.position) < 15)
+        //Debug.Log("Trying to Update");
+        if (Vector3.Distance(transform.position, playerObj.transform.position) < detectDistance)
         {
-            Debug.Log("Passed");
+            //Debug.Log("Passed");
             agent.destination = player.position;
             know = true;
+            Debug.Log("Updating");
         }
     }
 
@@ -119,7 +121,7 @@ public class Duck : Damageable
                     canHearPlayer = true;
                     know = true;
                     patrolling = false;
-                    Debug.Log("Heard");
+                    //Debug.Log("Heard");
                     BeginPatrol();
                 }
             }
@@ -142,14 +144,14 @@ public class Duck : Damageable
             float distanceToTarget = Vector3.Distance(transform.position, target.position);
             if (!(Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleLayer)))
             {
-                Debug.Log("Saw");
+                //Debug.Log("Saw");
                 canSeePlayer = true;
                 locMan.broadcast = true;
             }
             else
             {
                 canSeePlayer = false;
-                Debug.Log("Obstructed");
+                //Debug.Log("Obstructed");
             }
         }
     }
@@ -160,7 +162,6 @@ public class Duck : Damageable
         {
             AreaCheck(true);
             yield return new WaitForSeconds(.1f);
-            Debug.Log("Checking");
         }
     }
 
