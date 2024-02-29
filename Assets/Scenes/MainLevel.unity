@@ -86691,7 +86691,11 @@ PrefabInstance:
     - target: {fileID: 752037522, guid: 5c2c4633a7d57a44cabf541fa439eab8, type: 3}
       propertyPath: crouchIcon
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 669006673}
+    - target: {fileID: 752037522, guid: 5c2c4633a7d57a44cabf541fa439eab8, type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 1530683699}
     - target: {fileID: 752037522, guid: 5c2c4633a7d57a44cabf541fa439eab8, type: 3}
       propertyPath: delayTiming
       value: 3
