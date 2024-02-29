@@ -128,20 +128,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 310698a02c84be942a20d225665c0502, type: 3}
   m_PrefabInstance: {fileID: 316024202849350493}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &6573084457749747052
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 622578150128209420}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.026550781
-  m_Height: 0.05064802
-  m_Direction: 1
-  m_Center: {x: 0.0011536162, y: 0.0021137549, z: 0.0042950204}
 --- !u!54 &5009878314923999740
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -157,4 +143,18 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!136 &6573084457749747052
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622578150128209420}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.026550781
+  m_Height: 0.05064802
+  m_Direction: 1
+  m_Center: {x: 0.0011536162, y: 0.0021137549, z: 0.0042950204}
