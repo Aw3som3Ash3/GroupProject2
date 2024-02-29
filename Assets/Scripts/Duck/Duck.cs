@@ -60,7 +60,7 @@ public class Duck : Damageable
         }
 
         animator.SetFloat("currentSpeed", rb.velocity.magnitude);
-        Debug.Log (rb.velocity.magnitude);
+        //Debug.Log (rb.velocity.magnitude);
         //Debug.Log(currentSpeed);
     }
 
