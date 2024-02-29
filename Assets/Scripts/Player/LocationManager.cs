@@ -8,6 +8,8 @@ public class LocationManager : DuckDuckGoose
     public Duck goose;
     public Transform playerLoc;
     public bool broadcast = false;
+
+    public GameObject UIObj;
     // Start is called before the first frame update
     void Start()
     {

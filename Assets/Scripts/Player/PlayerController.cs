@@ -129,7 +129,8 @@ public class PlayerController : Damageable
     public override void Die()
     {
         Debug.Log($"{this.gameObject.name} took is Dead");
-        
+        Time.timeScale = 0;
+        gm.gameObject.transform.GetChild(3).gameObject.SetActive(true);
     }
 
 

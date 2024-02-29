@@ -165,11 +165,12 @@ public class Duck : Damageable
         }
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             playerRef.TakeDamage(1);
+            playerRef.StartCoroutine("DamageDelay");
         }
     }
 }

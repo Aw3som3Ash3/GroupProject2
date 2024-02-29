@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Damageable : DuckDuckGoose
 {
-    private int health;
+    public int health;
     private bool interactable = true;
     public float delayTiming;
     public virtual void TakeDamage(int damageAmnt)
