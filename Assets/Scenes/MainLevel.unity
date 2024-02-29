@@ -50680,6 +50680,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4513221490502962094, guid: 032998161964758499597706fc1b0ee2, type: 3}
+      propertyPath: m_text
+      value: Use WASD to move and Space to jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513221490502962094, guid: 032998161964758499597706fc1b0ee2, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513221490502962094, guid: 032998161964758499597706fc1b0ee2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513221490502962094, guid: 032998161964758499597706fc1b0ee2, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 032998161964758499597706fc1b0ee2, type: 3}
 --- !u!4 &1255215886 stripped
@@ -85585,6 +85601,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Campfire
       objectReference: {fileID: 0}
+    - target: {fileID: 5564944185496531332, guid: 0e252b916d518d842bd9ea8fde998cc3, type: 3}
+      propertyPath: m_Range
+      value: 33.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564944185496531332, guid: 0e252b916d518d842bd9ea8fde998cc3, type: 3}
+      propertyPath: m_Intensity
+      value: 7.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e252b916d518d842bd9ea8fde998cc3, type: 3}
 --- !u!114 &1355415978150486665 stripped
@@ -86577,6 +86601,10 @@ PrefabInstance:
     - target: {fileID: 2736039238060448592, guid: 032998161964758499597706fc1b0ee2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513221490502962094, guid: 032998161964758499597706fc1b0ee2, type: 3}
+      propertyPath: m_text
+      value: Beware of Goose!
       objectReference: {fileID: 0}
     - target: {fileID: 5168852828629805314, guid: 032998161964758499597706fc1b0ee2, type: 3}
       propertyPath: m_IsActive
