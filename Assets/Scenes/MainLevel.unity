@@ -69186,7 +69186,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1681911300
 Rigidbody:
@@ -88530,7 +88530,7 @@ PrefabInstance:
       objectReference: {fileID: 2062542515}
     - target: {fileID: 7914038729363847246, guid: fc009cf1a25add24099182acdea90b8c, type: 3}
       propertyPath: radius
-      value: 50.56
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 7914038729363847246, guid: fc009cf1a25add24099182acdea90b8c, type: 3}
       propertyPath: playerObj
@@ -88778,7 +88778,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 567088312629568938, guid: 1c1e7a09c05a9614cb97cca9693efabc, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 567088312629568938, guid: 1c1e7a09c05a9614cb97cca9693efabc, type: 3}
       propertyPath: m_LocalPosition.x
