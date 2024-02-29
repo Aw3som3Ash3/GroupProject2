@@ -111,8 +111,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e347faefbd4413499935b31708dcbfe, type: 3}
   m_PrefabInstance: {fileID: 6197473661190176952}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1368793092104628857
-MeshCollider:
+--- !u!136 &1646630394165176961
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -121,10 +121,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2837682660325928517, guid: 9e347faefbd4413499935b31708dcbfe, type: 3}
+  m_Radius: 0.05300149
+  m_Height: 0.13649516
+  m_Direction: 1
+  m_Center: {x: -0.0036205892, y: 0.0007179752, z: 0.0005732924}
 --- !u!208 &5687296270140953244
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -141,3 +141,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.004, y: 0.001, z: 0.001}
   m_TimeToStationary: 0.5
+--- !u!54 &1045656594788084581
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6539420879310929385}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
