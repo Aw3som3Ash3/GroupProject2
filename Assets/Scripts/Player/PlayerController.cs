@@ -95,11 +95,11 @@ public class PlayerController : PlayerSettings
         currSpeed = speedBoost ? walkSpeedMod : walkSpeed;
         if (speedBoost)
         {
-            Debug.Log("Speedy");
+            //Debug.Log("Speedy");
         }
         if (invincible)
         {
-            Debug.Log("Invincible");
+            //Debug.Log("Invincible");
         }
     }
 
@@ -129,6 +129,10 @@ public class PlayerController : PlayerSettings
         if (!crouched)
         {
             locMan.UpdateLocation(myLoc);
+        }
+        else
+        {
+            locMan.broadcast = false;
         }
         crouchIcon.SetActive(crouched);
     }
@@ -167,16 +171,20 @@ public class PlayerController : PlayerSettings
         if (other.gameObject.CompareTag("Detection"))
         {
             locMan.UpdateLocation(other.gameObject.GetComponent<BoxDetection>().boxLoc);
-            Debug.Log($"{myLoc}");
+            locMan.broadcast = true;
+            if (other.gameObject.GetComponent<BoxDetection>().boxLoc == Location.PlayerSpawn)
+            {
+                locMan.broadcast = false;
+            }
         }
-        Debug.Log("Entered" + other.gameObject.name);
+        //Debug.Log("Entered" + other.gameObject.name);
     }
 
     public override void Die()
     {
         if (!invincible)
         {
-            Debug.Log($"{this.gameObject.name} took is Dead");
+            //Debug.Log($"{this.gameObject.name} took is Dead");
             Time.timeScale = 0;
             gm.gameObject.transform.GetChild(3).gameObject.SetActive(true);
         }

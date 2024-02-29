@@ -15,14 +15,13 @@ public class Duck : Damageable
     public PlayerController playerRef;
     public Animator animator;
     public GameObject sm;
+    public AudioClip honk;
+    public AudioSource audioSource;
 
     //Detection
-    public bool canSeePlayer;
-    public bool canHearPlayer;
     public bool onceQuacked;
     public float quackNormal;
     public float quackAccelerated;
-    public bool know;
     public float detectDistance = 30;
     
     //Vision
@@ -33,7 +32,9 @@ public class Duck : Damageable
     
     //Patrol
     public float patrolDistance;
-    public bool patrolling;
+    public bool patrolling = true;
+
+    public bool startPatrol;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,24 +45,26 @@ public class Duck : Damageable
     // Update is called once per frame
     void Update()
     {
-        locMan.broadcast = canSeePlayer ? true : false;
-        locMan.broadcast = canHearPlayer ? true : false;
-        if (rb.velocity.magnitude < .1 && !patrolling)
+        if (startPatrol)
         {
             StartCoroutine("QuackTimer");
             BeginPatrol();
             patrolling = true;
-            //Debug.Log("Starting Patrol");
+            startPatrol = false;
+            Debug.Log("Starting Patrol");
         }
-        if (know || canSeePlayer)
-        {
-            StopCoroutine("QuackTimer");
-            locMan.broadcast = true;
-        }
-
         animator.SetFloat("currentSpeed", rb.velocity.magnitude);
-        Debug.Log (rb.velocity.magnitude);
+        //Debug.Log (rb.velocity.magnitude);
         //Debug.Log(currentSpeed);
+        if (patrolling && locMan.broadcast)
+        {
+            patrolling = !locMan.broadcast;
+            startPatrol = false;
+        } else if (!patrolling && !locMan.broadcast)
+        {
+            patrolling = true;
+            startPatrol = true;
+        }
     }
 
     private void FixedUpdate()
@@ -74,7 +77,7 @@ public class Duck : Damageable
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         animator = sm.GetComponent<Animator>();
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void UpdateDestination(Transform player)
@@ -84,7 +87,6 @@ public class Duck : Damageable
         {
             //Debug.Log("Passed");
             agent.destination = player.position;
-            know = true;
             Debug.Log("Updating");
         }
     }
@@ -93,8 +95,10 @@ public class Duck : Damageable
     {
         WaitForSeconds quackWait = onceQuacked ? new WaitForSeconds(quackAccelerated) : new WaitForSeconds(quackNormal);
         yield return quackWait;
-        patrolling = false;
         AreaCheck(false);
+        audioSource.clip = honk;
+        audioSource.Play();
+        Debug.Log("Quacking");
     }
 
     void BeginPatrol()
@@ -108,6 +112,7 @@ public class Duck : Damageable
             Vector3 finalPosition = hit.position;
             agent.destination = finalPosition;
             patrolling = true;
+            StartCoroutine("QuackTimer");
         }
     }
 
@@ -125,20 +130,18 @@ public class Duck : Damageable
                 else if (playerRef.audible)
                 {
                     onceQuacked = false;
-                    canHearPlayer = true;
-                    know = true;
-                    patrolling = false;
-                    //Debug.Log("Heard");
-                    BeginPatrol();
+                    locMan.broadcast = true;
+                    Debug.Log("Heard");
+
                 }
             }
         }
-
-        if (!canHearPlayer)
+        else if(rangeChecks.Length == 0 && !vision)
         {
             onceQuacked = true;
             StartCoroutine("QuackTimer");
         }
+
     }
 
     void FOVCheck(Collider[] rangeChecks)
@@ -152,12 +155,13 @@ public class Duck : Damageable
             if (!(Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleLayer)))
             {
                 //Debug.Log("Saw");
-                canSeePlayer = true;
                 locMan.broadcast = true;
+                patrolling = false;
+                Debug.Log("broadcast by vision");
+                StopCoroutine("QuackTimer");
             }
             else
             {
-                canSeePlayer = false;
                 //Debug.Log("Obstructed");
             }
         }
