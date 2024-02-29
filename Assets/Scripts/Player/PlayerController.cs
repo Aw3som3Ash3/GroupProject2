@@ -51,6 +51,11 @@ public class PlayerController : Damageable
         CameraUpdate();
         MoveUpdate();
         if (!crouched) { locMan.UpdatePlayerLocation(); }
+
+        if (myLoc == Location.PlayerSpawn)
+        {
+            locMan.broadcast = false;
+        }
     }
     void InitializeComponents()
     {
@@ -120,10 +125,12 @@ public class PlayerController : Damageable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "DuckSpawnBox")
+        if (other.gameObject.CompareTag("Detection"))
         {
-            locMan.broadcast = true;
+            locMan.UpdateLocation(other.gameObject.GetComponent<BoxDetection>().boxLoc);
+            Debug.Log($"{myLoc}");
         }
+        Debug.Log("Entered" + other.gameObject.name);
     }
 
     public override void Die()

@@ -5,6 +5,8 @@ using UnityEngine;
 public class BoxDetection : DuckDuckGoose
 {
     public LocationManager locMan;
+
+    public Location boxLoc;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,15 +18,16 @@ public class BoxDetection : DuckDuckGoose
     {
 
     }
-    private void OnTriggerStay(Collider other)
+    /*private void OnTriggerStay(Collider other)
     {
         GameObject curr = other.gameObject;
         if (curr.CompareTag("Player"))
         {
-            if (curr.GetComponent<PlayerController>().myLoc != myLoc && !curr.GetComponent<PlayerController>().crouched)
+            Debug.Log(curr.GetComponent<PlayerController>().myLoc +" " + boxLoc);
+            if (curr.GetComponent<PlayerController>().myLoc != boxLoc && !curr.GetComponent<PlayerController>().crouched)
             {
                 locMan.UpdateLocation(myLoc);
             }
         }
-    }
+    }*/
 }

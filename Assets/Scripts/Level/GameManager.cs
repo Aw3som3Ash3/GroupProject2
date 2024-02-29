@@ -11,8 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject Pause;
     public GameObject Quit;
     public PlayerController player;
-    public InputActionMap Base;
-    public InputActionMap UI;
+    public GameObject Win;
     public Button[] buttons;
 
     public bool paused;
@@ -64,6 +63,14 @@ public class GameManager : MonoBehaviour
     public void LoadLevel(string level)
     {
         SceneManager.LoadScene(level);
+    }
+
+    IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(5f);
+        Win.SetActive(true);
+        Time.timeScale = 0f;
+        player.GetComponent<PlayerController>().actions.Disable();
     }
 
     

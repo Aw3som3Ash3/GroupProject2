@@ -19,13 +19,15 @@ public class LocationManager : DuckDuckGoose
     // Update is called once per frame
     void Update()
     {
-
+        if (myLoc == Location.PlayerSpawn)
+        {
+            broadcast = false;
+        }
     }
 
-    override public void UpdateLocation(Location now)
+    public void UpdateLocation(Location now)
     {
         myLoc = now;
-        goose.UpdateLocation(myLoc);
         Debug.Log(now);
         if (now != Location.PlayerSpawn)
         {
@@ -35,7 +37,6 @@ public class LocationManager : DuckDuckGoose
         {
             broadcast = false;
         }
-
         Debug.Log(broadcast);
     }
 
