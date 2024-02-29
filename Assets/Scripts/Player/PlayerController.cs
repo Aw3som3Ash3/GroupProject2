@@ -37,6 +37,8 @@ public class PlayerController : PlayerSettings
 
     public GameObject crouchIcon;
     public TMP_Text healthText;
+    public AudioSource audioSource;
+    private bool walking;
     public float CurrSpeed
     {
         get { return currSpeed;}
@@ -78,6 +80,7 @@ public class PlayerController : PlayerSettings
         }
 
         healthText.text = "Health: " + health/2;
+        audioSource.enabled = walking;
     }
     void InitializeComponents()
     {
@@ -86,6 +89,8 @@ public class PlayerController : PlayerSettings
 
         //Actions
         moveVector = actions.FindAction("Move");
+        actions.FindAction("Move").performed += OnMove;
+        actions.FindAction("Move").canceled += OnMoveEnd;
         lookVector = actions.FindAction("Look");
         actions.FindAction("Jump").performed += OnJump;
         actions.FindAction("Crouch").performed += OnCrouch;
@@ -101,6 +106,17 @@ public class PlayerController : PlayerSettings
         {
             //Debug.Log("Invincible");
         }
+
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    private void OnMove(InputAction.CallbackContext context)
+    {
+        walking = true;
+    }
+    private void OnMoveEnd(InputAction.CallbackContext context)
+    {
+        walking = false;
     }
 
     private void OnJump(InputAction.CallbackContext context)
