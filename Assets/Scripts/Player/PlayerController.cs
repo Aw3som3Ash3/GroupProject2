@@ -6,13 +6,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : Damageable
+public class PlayerController : PlayerSettings
 {
     //Movement
-    public float walkSpeed;
-    public float crouchSpeed;
-    private float currSpeed;
-    public bool crouched;
+    
+    
+    
     public bool grounded;
     private float drag = .8f;
     public InputAction moveVector;
@@ -24,8 +23,6 @@ public class PlayerController : Damageable
     //Camera
     private float mouseX;
     private float mouseY;
-    [Range(0.0f, 10.0f)]
-    public float mouseSens = 1;
     private float xRot;
     private float yRot;
     public InputAction lookVector;
@@ -35,6 +32,26 @@ public class PlayerController : Damageable
     private Rigidbody rb;
     public InputActionAsset actions;
     public Camera myCam;
+    public float walkSpeed, walkSpeedMod;
+    public float crouchSpeed, crouchSpeedMod;
+    public float currSpeed;
+    public float CurrSpeed
+    {
+        get { return currSpeed;}
+        set
+        {
+            currSpeed = value;
+            if (!crouched)
+            {
+                currSpeed = speedBoost ? walkSpeedMod : walkSpeed;
+            }
+            else
+            {
+                currSpeed = speedBoost ? crouchSpeedMod : crouchSpeed;
+            }
+        }
+    }
+    public bool crouched;
 
     //Location
     public bool audible = true;
@@ -70,7 +87,15 @@ public class PlayerController : Damageable
         actions.FindActionMap("Base").FindAction("Pause").performed += OnPause;
         actions.Enable();
         //Set Variables
-        currSpeed = walkSpeed;
+        currSpeed = speedBoost ? walkSpeedMod : walkSpeed;
+        if (speedBoost)
+        {
+            Debug.Log("Speedy");
+        }
+        if (invincible)
+        {
+            Debug.Log("Invincible");
+        }
     }
 
     private void OnJump(InputAction.CallbackContext context)
@@ -86,7 +111,15 @@ public class PlayerController : Damageable
     private void OnCrouch(InputAction.CallbackContext context)
     {
         crouched = !crouched;
-        currSpeed = crouched ? crouchSpeed : walkSpeed;
+        if (speedBoost)
+        {
+            currSpeed = crouched ? crouchSpeedMod : walkSpeedMod;
+        }
+        else
+        {
+            currSpeed = crouched ? crouchSpeed : walkSpeed;
+        }
+
         audible = crouched ? true : false;
         if (!crouched)
         {
@@ -135,10 +168,12 @@ public class PlayerController : Damageable
 
     public override void Die()
     {
-        Debug.Log($"{this.gameObject.name} took is Dead");
-        Time.timeScale = 0;
-        gm.gameObject.transform.GetChild(3).gameObject.SetActive(true);
+        if (!invincible)
+        {
+            Debug.Log($"{this.gameObject.name} took is Dead");
+            Time.timeScale = 0;
+            gm.gameObject.transform.GetChild(3).gameObject.SetActive(true);
+        }
     }
-
 
 }
