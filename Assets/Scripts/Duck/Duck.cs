@@ -13,6 +13,8 @@ public class Duck : Damageable
     private NavMeshAgent agent;
     public GameObject playerObj;
     public PlayerController playerRef;
+    public Animator animator;
+    public GameObject sm;
 
     //Detection
     public bool canSeePlayer;
@@ -56,6 +58,10 @@ public class Duck : Damageable
             StopCoroutine("QuackTimer");
             locMan.broadcast = true;
         }
+
+        animator.SetFloat("currentSpeed", rb.velocity.magnitude);
+        Debug.Log (rb.velocity.magnitude);
+        //Debug.Log(currentSpeed);
     }
 
     private void FixedUpdate()
@@ -67,6 +73,7 @@ public class Duck : Damageable
     {
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
+        animator = sm.GetComponent<Animator>();
         
     }
 
