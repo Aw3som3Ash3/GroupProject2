@@ -2,16 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : PlayerSettings
 {
     //Movement
-    
-    
-    
     public bool grounded;
     private float drag = .8f;
     public InputAction moveVector;
@@ -35,6 +34,9 @@ public class PlayerController : PlayerSettings
     public float walkSpeed, walkSpeedMod;
     public float crouchSpeed, crouchSpeedMod;
     public float currSpeed;
+
+    public GameObject crouchIcon;
+    public TMP_Text healthText;
     public float CurrSpeed
     {
         get { return currSpeed;}
@@ -60,6 +62,7 @@ public class PlayerController : PlayerSettings
     {
         InitializeComponents();
         locMan.UpdatePlayerLocation();
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
@@ -73,6 +76,8 @@ public class PlayerController : PlayerSettings
         {
             locMan.broadcast = false;
         }
+
+        healthText.text = "Health: " + health/2;
     }
     void InitializeComponents()
     {
@@ -125,6 +130,7 @@ public class PlayerController : PlayerSettings
         {
             locMan.UpdateLocation(myLoc);
         }
+        crouchIcon.SetActive(crouched);
     }
     private void OnPause(InputAction.CallbackContext context)
     {
