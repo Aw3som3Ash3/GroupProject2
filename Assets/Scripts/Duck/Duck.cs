@@ -53,9 +53,10 @@ public class Duck : Damageable
             startPatrol = false;
             Debug.Log("Starting Patrol");
         }
-        animator.SetFloat("currentSpeed", rb.velocity.magnitude);
-        //Debug.Log (rb.velocity.magnitude);
-        //Debug.Log(currentSpeed);
+
+        //SetCurrentSpeed();
+
+
         if (patrolling && locMan.broadcast)
         {
             patrolling = !locMan.broadcast;
@@ -76,7 +77,7 @@ public class Duck : Damageable
     {
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
-        animator = sm.GetComponent<Animator>();
+        //animator = sm.GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -183,5 +184,20 @@ public class Duck : Damageable
             playerRef.TakeDamage(1);
             playerRef.StartCoroutine("DamageDelay");
         }
+    }
+
+    void SetCurrentSpeed()
+    {
+        if (rb.velocity.x > 0.1)
+        {
+            animator.SetFloat("currentSpeed", 1f);
+        }
+        else
+        {
+            animator.SetFloat("currentSpeed", 0f);
+        }
+
+        Debug.Log (rb.velocity.z);
+        //Debug.Log(currentSpeed);
     }
 }
