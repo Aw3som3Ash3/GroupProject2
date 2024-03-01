@@ -159,12 +159,15 @@ public class PlayerController : PlayerSettings
 
     private void CameraUpdate()
     {
-        mouseX = lookVector.ReadValue<Vector2>().x;
-        mouseY = lookVector.ReadValue<Vector2>().y;
-        xRot -= mouseY;
-        xRot = Mathf.Clamp(xRot, -90f, 100);
-        myCam.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
-        rb.transform.Rotate(Vector3.up * mouseX * mouseSens);
+        if (!gm.paused)
+        {
+            mouseX = lookVector.ReadValue<Vector2>().x;
+            mouseY = lookVector.ReadValue<Vector2>().y;
+            xRot -= mouseY;
+            xRot = Mathf.Clamp(xRot, -90f, 100);
+            myCam.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
+            rb.transform.Rotate(Vector3.up * mouseX * mouseSens);
+        }
     }
 
     private void MoveUpdate()
