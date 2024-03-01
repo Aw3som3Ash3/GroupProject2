@@ -71345,6 +71345,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7904120768360043956, guid: f405aa9e145fa714498440268f71889b, type: 3}
   m_PrefabInstance: {fileID: 1721379483}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1726872608 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2511976213370043127, guid: fc009cf1a25add24099182acdea90b8c, type: 3}
+  m_PrefabInstance: {fileID: 3358627941360852786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1730300318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89088,6 +89093,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7914038729363847246, guid: fc009cf1a25add24099182acdea90b8c, type: 3}
+      propertyPath: sm
+      value: 
+      objectReference: {fileID: 1726872608}
+    - target: {fileID: 7914038729363847246, guid: fc009cf1a25add24099182acdea90b8c, type: 3}
       propertyPath: honk
       value: 
       objectReference: {fileID: 8300000, guid: 59d884f97ee7e2b44beb93290cfc9389, type: 3}
@@ -89097,7 +89106,7 @@ PrefabInstance:
       objectReference: {fileID: 2062542515}
     - target: {fileID: 7914038729363847246, guid: fc009cf1a25add24099182acdea90b8c, type: 3}
       propertyPath: radius
-      value: 64
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 7914038729363847246, guid: fc009cf1a25add24099182acdea90b8c, type: 3}
       propertyPath: playerObj
@@ -89109,7 +89118,11 @@ PrefabInstance:
       objectReference: {fileID: 1414040515}
     - target: {fileID: 7914038729363847246, guid: fc009cf1a25add24099182acdea90b8c, type: 3}
       propertyPath: detectDistance
-      value: 35.8
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184996291563452983, guid: fc009cf1a25add24099182acdea90b8c, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1143909358523165682, guid: fc009cf1a25add24099182acdea90b8c, type: 3}

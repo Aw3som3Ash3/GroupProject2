@@ -53,9 +53,10 @@ public class Duck : Damageable
             startPatrol = false;
             Debug.Log("Starting Patrol");
         }
+
         animator.SetFloat("currentSpeed", rb.velocity.magnitude);
-        //Debug.Log (rb.velocity.magnitude);
-        //Debug.Log(currentSpeed);
+        Debug.Log (rb.velocity.magnitude);
+
         if (patrolling && locMan.broadcast)
         {
             patrolling = !locMan.broadcast;

@@ -87,12 +87,11 @@ MonoBehaviour:
   playerRef: {fileID: 0}
   animator: {fileID: 0}
   sm: {fileID: 8158497616427625644}
-  canSeePlayer: 0
-  canHearPlayer: 0
+  honk: {fileID: 0}
+  audioSource: {fileID: 0}
   onceQuacked: 0
   quackNormal: 5
   quackAccelerated: 2.5
-  know: 0
   detectDistance: 30
   radius: 45
   angle: 100
@@ -104,6 +103,7 @@ MonoBehaviour:
     m_Bits: 64
   patrolDistance: 30
   patrolling: 1
+  startPatrol: 0
 --- !u!195 &1875419890
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -246,6 +246,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2349491868522742110}
     m_Modifications:
+    - target: {fileID: 2997074548840452151, guid: 2f354a0070b37a949a8f09cac414301e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3617008960748813977, guid: 2f354a0070b37a949a8f09cac414301e, type: 3}
       propertyPath: m_Name
       value: GooseSM
