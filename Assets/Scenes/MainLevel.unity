@@ -9003,7 +9003,7 @@ SkinnedMeshRenderer:
   m_Mesh: {fileID: -5597002278806442958, guid: 3211522a0531d0045907666efb305c20, type: 3}
   m_Bones: []
   m_BlendShapeWeights: []
-  m_RootBone: {fileID: 0}
+  m_RootBone: {fileID: 1568067192}
   m_AABB:
     m_Center: {x: 0.002332034, y: -0.054916464, z: 0.044087045}
     m_Extent: {x: 0.011937207, y: 0.030628102, z: 0.032518417}
@@ -27884,7 +27884,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fd819aac27588c443880bd0a230f8b00, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -32994,7 +32994,7 @@ SkinnedMeshRenderer:
   m_Mesh: {fileID: 6329158148709259305, guid: 3211522a0531d0045907666efb305c20, type: 3}
   m_Bones: []
   m_BlendShapeWeights: []
-  m_RootBone: {fileID: 0}
+  m_RootBone: {fileID: 1568067192}
   m_AABB:
     m_Center: {x: 0.0023631146, y: -0.026409574, z: 0.07143227}
     m_Extent: {x: 0.0042112116, y: 0.003865148, z: 0.0028282553}
@@ -42335,7 +42335,7 @@ SkinnedMeshRenderer:
   m_Mesh: {fileID: 4164511204261677510, guid: 3211522a0531d0045907666efb305c20, type: 3}
   m_Bones: []
   m_BlendShapeWeights: []
-  m_RootBone: {fileID: 0}
+  m_RootBone: {fileID: 1568067192}
   m_AABB:
     m_Center: {x: -0.003819428, y: -0.051771183, z: 0.0105162915}
     m_Extent: {x: 0.005796635, y: 0.007107582, z: 0.0105221495}
@@ -54074,6 +54074,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8798445146809049136, guid: 1d323d2d6bf57ed4eaefe0c8beeecdf1, type: 3}
   m_PrefabInstance: {fileID: 1313399035}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1313918100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8158497616427625644, guid: fc009cf1a25add24099182acdea90b8c, type: 3}
+  m_PrefabInstance: {fileID: 3358627941360852786}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1313918102
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313918100}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1315628540
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64497,6 +64523,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7904120768360043956, guid: f405aa9e145fa714498440268f71889b, type: 3}
   m_PrefabInstance: {fileID: 1566032977}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1568067192 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4641826607987228034, guid: fc009cf1a25add24099182acdea90b8c, type: 3}
+  m_PrefabInstance: {fileID: 3358627941360852786}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1568202699
 PrefabInstance:
@@ -86229,7 +86260,7 @@ SkinnedMeshRenderer:
   m_Mesh: {fileID: 2381890483179193753, guid: 3211522a0531d0045907666efb305c20, type: 3}
   m_Bones: []
   m_BlendShapeWeights: []
-  m_RootBone: {fileID: 0}
+  m_RootBone: {fileID: 1568067192}
   m_AABB:
     m_Center: {x: 0.008396294, y: -0.0517712, z: 0.010516287}
     m_Extent: {x: 0.0057966346, y: 0.00710758, z: 0.010522154}
@@ -87023,15 +87054,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1666554283815330277, guid: c06786d051c94a54aa85c039583cf061, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1666554283815330277, guid: c06786d051c94a54aa85c039583cf061, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1666554283815330277, guid: c06786d051c94a54aa85c039583cf061, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1666554284265177969, guid: c06786d051c94a54aa85c039583cf061, type: 3}
       propertyPath: m_Color.b
@@ -87091,7 +87122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1666554284908397837, guid: c06786d051c94a54aa85c039583cf061, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1666554284908397838, guid: c06786d051c94a54aa85c039583cf061, type: 3}
       propertyPath: m_Pivot.x
@@ -87199,11 +87230,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1666554285015903762, guid: c06786d051c94a54aa85c039583cf061, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1666554285015903762, guid: c06786d051c94a54aa85c039583cf061, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1666554285349303975, guid: c06786d051c94a54aa85c039583cf061, type: 3}
       propertyPath: m_Color.b
@@ -87229,6 +87260,10 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontSize
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 1666554285412654894, guid: c06786d051c94a54aa85c039583cf061, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f1c12ef66cecefc4eb0a38c3c8f25036, type: 3}
     - target: {fileID: 1666554285462656080, guid: c06786d051c94a54aa85c039583cf061, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0.5
@@ -87245,6 +87280,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1666554285571175753, guid: c06786d051c94a54aa85c039583cf061, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f1c12ef66cecefc4eb0a38c3c8f25036, type: 3}
     - target: {fileID: 2657188700276089599, guid: c06786d051c94a54aa85c039583cf061, type: 3}
       propertyPath: m_RootOrder
       value: 3
