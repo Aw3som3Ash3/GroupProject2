@@ -10,6 +10,8 @@ public class Bread : DuckDuckGoose
     
     public GameObject player;
     public GameObject enemy;
+
+    static bool pickedUp;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,9 +29,10 @@ public class Bread : DuckDuckGoose
         if (other.gameObject.CompareTag("Player"))
         {
             player.transform.GetChild(2).gameObject.SetActive(true);
+            pickedUp = true;
         }
 
-        if (other.gameObject.CompareTag("Goose"))
+        if (other.gameObject.CompareTag("Goose") && pickedUp)
         {
             enemy.GetComponent<Duck>().locMan.broadcast = false;
             enemy.GetComponent<Duck>().enabled = false;
