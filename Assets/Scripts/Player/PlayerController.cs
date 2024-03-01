@@ -34,6 +34,7 @@ public class PlayerController : PlayerSettings
     public float walkSpeed, walkSpeedMod;
     public float crouchSpeed, crouchSpeedMod;
     public float currSpeed;
+    public GameObject warning;
 
     public GameObject crouchIcon;
     public TMP_Text healthText;
@@ -81,6 +82,7 @@ public class PlayerController : PlayerSettings
 
         healthText.text = "Health: " + health/2;
         audioSource.enabled = walking;
+        warning.SetActive(locMan.broadcast);
     }
     void InitializeComponents()
     {
