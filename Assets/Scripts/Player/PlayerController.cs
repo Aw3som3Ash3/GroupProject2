@@ -18,6 +18,7 @@ public class PlayerController : PlayerSettings
     //Jump
     public float jumpForce = 100;
     private GameObject me;
+    public GameObject loseMenu;
 
     //Camera
     private float mouseX;
@@ -207,7 +208,7 @@ public class PlayerController : PlayerSettings
         {
             //Debug.Log($"{this.gameObject.name} took is Dead");
             Time.timeScale = 0;
-            gm.gameObject.transform.GetChild(3).gameObject.SetActive(true);
+            loseMenu.SetActive(true);
         }
     }
 

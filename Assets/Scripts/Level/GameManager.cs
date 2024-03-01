@@ -49,7 +49,9 @@ public class GameManager : MonoBehaviour
             Pause.SetActive(false);
         }
     }
-    public void Reload(){
+    public void Reload()
+    {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainLevel");
     }
     public void OnOptions(){
