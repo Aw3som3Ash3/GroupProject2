@@ -30,6 +30,7 @@ public class Bread : DuckDuckGoose
         {
             player.transform.GetChild(2).gameObject.SetActive(true);
             pickedUp = true;
+            player.GetComponent<PlayerController>().bread = true;
         }
 
         if (other.gameObject.CompareTag("Goose") && pickedUp)

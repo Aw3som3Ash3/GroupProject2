@@ -92,6 +92,8 @@ public class PlayerController : PlayerSettings
     }
     void InitializeComponents()
     {
+        
+        
         //Components
         rb = GetComponent<Rigidbody>();
 
@@ -116,6 +118,7 @@ public class PlayerController : PlayerSettings
         }
 
         audioSource = GetComponent<AudioSource>();
+        
     }
 
     private void OnMove(InputAction.CallbackContext context)
