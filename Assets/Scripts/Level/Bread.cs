@@ -37,7 +37,7 @@ public class Bread : DuckDuckGoose
             enemy.GetComponent<Duck>().locMan.broadcast = false;
             enemy.GetComponent<Duck>().enabled = false;
             player.transform.GetChild(2).gameObject.SetActive(false);
-            enemy.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            enemy.gameObject.GetComponent<Duck>().bread.SetActive(true);
             gm.StartCoroutine("EndGame");
         }
         Debug.Log(other.gameObject.tag);

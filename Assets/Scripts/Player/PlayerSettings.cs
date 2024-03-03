@@ -9,8 +9,8 @@ using UnityEngine.InputSystem;
     {
         public static bool invincible;
         public static bool speedBoost;
-        [Range(0.0f, 10.0f)]
-        public static float mouseSens = 1;
+        [Range(1f, 20.0f)]
+        public static float mouseSens = 3;
 
         public PlayerController lesser;
         

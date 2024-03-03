@@ -33,6 +33,7 @@ public class Duck : Damageable
     //Patrol
     public float patrolDistance;
     public bool patrolling = true;
+    public GameObject bread;
 
     public bool startPatrol;
     // Start is called before the first frame update
@@ -70,7 +71,8 @@ public class Duck : Damageable
 
     private void FixedUpdate()
     {
-        
+        animator.SetFloat("currentSpeed", agent.velocity.magnitude);
+        Debug.Log(agent.velocity.magnitude);
     }
 
     void InitializeComponents()
@@ -186,9 +188,9 @@ public class Duck : Damageable
         }
     }
 
-    void SetCurrentSpeed()
+    /*void SetCurrentSpeed()
     {
-        if (rb.velocity.x > 0.1)
+        if (agent.velocity.magnitude >)
         {
             animator.SetFloat("currentSpeed", 1f);
         }
@@ -199,5 +201,5 @@ public class Duck : Damageable
 
         Debug.Log (rb.velocity.z);
         //Debug.Log(currentSpeed);
-    }
+    }*/
 }

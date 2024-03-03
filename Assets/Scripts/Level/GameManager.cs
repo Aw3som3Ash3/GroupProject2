@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
         Win.SetActive(true);
         Time.timeScale = 0f;
         player.GetComponent<PlayerController>().actions.Disable();
+        player.canLook = false;
     }
 
     

@@ -36,11 +36,14 @@ public class PlayerController : PlayerSettings
     public float crouchSpeed, crouchSpeedMod;
     public float currSpeed;
     public GameObject warning;
+    public bool canLook;
 
     public GameObject crouchIcon;
     public TMP_Text healthText;
     public AudioSource audioSource;
     private bool walking;
+    public float airSpeed;
+    public float airSpeedMod;
     public float CurrSpeed
     {
         get { return currSpeed;}
@@ -67,6 +70,7 @@ public class PlayerController : PlayerSettings
         InitializeComponents();
         locMan.UpdatePlayerLocation();
         Time.timeScale = 1f;
+        canLook = true;
     }
 
     // Update is called once per frame
@@ -129,6 +133,7 @@ public class PlayerController : PlayerSettings
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
             grounded = false;
             locMan.UpdatePlayerLocation();
+            currSpeed = speedBoost ? airSpeedMod : airSpeed;
         }
     }
 
@@ -158,11 +163,12 @@ public class PlayerController : PlayerSettings
     private void OnPause(InputAction.CallbackContext context)
     {
         gm.OnPause();
+        canLook = !gm.paused;
     }
 
     private void CameraUpdate()
     {
-        if (!gm.paused)
+        if (canLook)
         {
             mouseX = lookVector.ReadValue<Vector2>().x;
             mouseY = lookVector.ReadValue<Vector2>().y;
@@ -184,7 +190,14 @@ public class PlayerController : PlayerSettings
         if (other.gameObject.CompareTag("Ground"))
         {
             grounded = true;
-            drag = .8f;
+            if (speedBoost)
+            {
+                currSpeed = crouched ? crouchSpeedMod : walkSpeedMod;
+            }
+            else
+            {
+                currSpeed = crouched ? crouchSpeed : walkSpeed;
+            }
         }
     }
 
@@ -209,6 +222,7 @@ public class PlayerController : PlayerSettings
             //Debug.Log($"{this.gameObject.name} took is Dead");
             Time.timeScale = 0;
             loseMenu.SetActive(true);
+            canLook = false;
         }
     }
 
