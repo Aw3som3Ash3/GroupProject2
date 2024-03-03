@@ -44,6 +44,7 @@ public class PlayerController : PlayerSettings
     private bool walking;
     public float airSpeed;
     public float airSpeedMod;
+    public bool bread;
     public float CurrSpeed
     {
         get { return currSpeed;}
@@ -217,7 +218,7 @@ public class PlayerController : PlayerSettings
 
     public override void Die()
     {
-        if (!invincible)
+        if (!invincible || !bread)
         {
             //Debug.Log($"{this.gameObject.name} took is Dead");
             Time.timeScale = 0;

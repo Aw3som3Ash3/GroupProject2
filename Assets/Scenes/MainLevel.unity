@@ -87425,6 +87425,26 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 2760960489471758881}
+    - target: {fileID: 2074997657, guid: 5c2c4633a7d57a44cabf541fa439eab8, type: 3}
+      propertyPath: m_Radius
+      value: 6.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074997657, guid: 5c2c4633a7d57a44cabf541fa439eab8, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1152520611611632337, guid: 5c2c4633a7d57a44cabf541fa439eab8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.039
+      objectReference: {fileID: 0}
+    - target: {fileID: 1152520611611632337, guid: 5c2c4633a7d57a44cabf541fa439eab8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.507
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806597814413138420, guid: 5c2c4633a7d57a44cabf541fa439eab8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3001439400604681681, guid: 5c2c4633a7d57a44cabf541fa439eab8, type: 3}
       propertyPath: m_RootOrder
       value: 1
